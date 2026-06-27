@@ -1,2 +1,3 @@
 # BrainOS
-Gobal Rule
+
+Global Rules and governance foundation for BrainOS.
