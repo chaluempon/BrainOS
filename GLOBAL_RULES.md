@@ -377,7 +377,41 @@ For non-trivial completed tasks, include:
 - Cons or risks: tradeoffs, edge cases, or operational risks.
 - Recommendations: next validation steps, monitoring, or future cleanup.
 
-## 15. Change Control Rules
+## 15. BrainOS Repository Protection Rules
+
+The BrainOS central repository is the canonical governance source.
+
+Canonical repository:
+
+```text
+https://github.com/chaluempon/BrainOS.git
+```
+
+For child projects and downstream projects, BrainOS must be treated as read-only unless the user explicitly states that the current task is to maintain or update BrainOS itself.
+
+Child projects, downstream projects, and AI agents must not:
+
+- Modify the BrainOS central repository.
+- Edit the canonical `GLOBAL_RULES.md`.
+- Commit to the BrainOS central repository.
+- Push to the BrainOS central repository.
+- Create pull requests to the BrainOS central repository.
+- Change files outside the current project directory.
+- Copy local project assumptions back into BrainOS without explicit approval.
+
+AI agents may read BrainOS only as an external governance reference during project-local work.
+
+When applying BrainOS to another project:
+
+- Work only inside the current project directory.
+- Create project-local governance files under `BRAINOS/`.
+- Record the canonical BrainOS source in `BRAINOS/BRAINOS_ADOPTION.md`.
+- Do not clone BrainOS into the child project unless explicitly requested.
+- Do not overwrite, delete, rename, or move existing project files unless explicitly requested.
+- Do not modify application code unless the user explicitly requests implementation work.
+- If there is uncertainty about whether a file belongs to the BrainOS central repository or the current project, ask before editing.
+
+## 16. Change Control Rules
 
 Material changes to governed AI systems must update the relevant BrainOS documents. A material change includes any change to:
 
@@ -390,17 +424,26 @@ Material changes to governed AI systems must update the relevant BrainOS documen
 - Deployment or operational model.
 - Engineering architecture or implementation approach.
 
-## 16. Evaluation Rules
+Changes to the BrainOS central repository itself require explicit approval and should document:
+
+- Change summary.
+- Reason for change.
+- Affected documents.
+- Compatibility impact for child projects.
+- Review owner.
+- Effective date.
+
+## 17. Evaluation Rules
 
 AI systems must define success criteria before operational use. Evaluation may include quality, reliability, latency, cost, safety, compliance, human review rate, and business impact.
 
 Evaluation results must be documented when they influence project approval, redesign, or retirement.
 
-## 17. BrainOS Foundation Restrictions
+## 18. BrainOS Foundation Restrictions
 
 BrainOS itself is a governance and knowledge foundation. It must not contain business logic, application code, databases, containers, APIs, secrets, or production infrastructure unless explicitly approved by a future BrainOS governance decision.
 
-## 18. Compliance Checklist
+## 19. Compliance Checklist
 
 Before any AI project is considered governed by BrainOS, confirm:
 
@@ -415,3 +458,5 @@ Before any AI project is considered governed by BrainOS, confirm:
 - Documentation is current.
 - Global rules have been reviewed.
 - Engineering work follows the smallest verified change principle.
+- BrainOS central repository is treated as read-only during child project work.
+- Project-local BrainOS files live under the current project's `BRAINOS/` directory.
