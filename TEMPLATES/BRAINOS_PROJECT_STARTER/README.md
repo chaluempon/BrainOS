@@ -40,5 +40,7 @@ Agents should read `AGENTS.md` first, then the files under `BRAINOS/`.
 Required central rule file:
 
 ```text
-/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS/GLOBAL_RULES.md
+https://raw.githubusercontent.com/chaluempon/BrainOS/main/GLOBAL_RULES.md
 ```
+
+If a project needs offline operation, add BrainOS as a Git submodule or local mirror and document it as a fallback. Keep the GitHub raw URL as the canonical source.

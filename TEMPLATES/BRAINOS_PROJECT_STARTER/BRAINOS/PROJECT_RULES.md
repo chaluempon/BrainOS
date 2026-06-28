@@ -9,7 +9,7 @@ This project follows BrainOS Global AI Engineering Rules.
 Canonical BrainOS global rules:
 
 ```text
-/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS/GLOBAL_RULES.md
+https://raw.githubusercontent.com/chaluempon/BrainOS/main/GLOBAL_RULES.md
 ```
 
 Agents must read the canonical BrainOS global rules before making changes. This file contains only project-local rules and stricter project-specific requirements.

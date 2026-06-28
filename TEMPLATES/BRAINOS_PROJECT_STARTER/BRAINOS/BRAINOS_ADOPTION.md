@@ -15,7 +15,7 @@ https://github.com/chaluempon/BrainOS
 Canonical rule file:
 
 ```text
-/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS/GLOBAL_RULES.md
+https://raw.githubusercontent.com/chaluempon/BrainOS/main/GLOBAL_RULES.md
 ```
 
 ## Adoption Scope
@@ -42,6 +42,8 @@ Project-local rule files:
 BrainOS canonical rules remain the upstream source of truth. Agents must read the canonical `GLOBAL_RULES.md` directly from BrainOS instead of relying on copied rule text.
 
 Project-local rules may add stricter requirements, but must not weaken BrainOS global rules.
+
+If internet access is unavailable, use an approved local mirror or Git submodule only as a fallback.
 
 ## Project Override Rule
 

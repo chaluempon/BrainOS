@@ -8,15 +8,15 @@ Canonical BrainOS source:
 https://github.com/chaluempon/BrainOS
 ```
 
-Canonical local BrainOS rule file:
+Canonical BrainOS rule file:
 
 ```text
-/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS/GLOBAL_RULES.md
+https://raw.githubusercontent.com/chaluempon/BrainOS/main/GLOBAL_RULES.md
 ```
 
 Before making changes, agents must read:
 
-- `/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS/GLOBAL_RULES.md`
+- `https://raw.githubusercontent.com/chaluempon/BrainOS/main/GLOBAL_RULES.md`
 - `BRAINOS/BRAINOS_ADOPTION.md`
 - `BRAINOS/PROJECT_RULES.md`
 - `BRAINOS/SECURITY_EXPOSURE_CHECKLIST.md`
@@ -36,7 +36,7 @@ Before making changes, agents must read:
 Follow the canonical Global Security Rules from:
 
 ```text
-/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS/GLOBAL_RULES.md
+https://raw.githubusercontent.com/chaluempon/BrainOS/main/GLOBAL_RULES.md
 ```
 
 Project-local rules may add stricter requirements, but must not weaken the canonical BrainOS rules.
