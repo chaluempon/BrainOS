@@ -2,7 +2,7 @@
 
 **Document Status:** Active Standard  
 **Authority:** Single Source Of Truth  
-**Last Updated:** 2026-06-27
+**Last Updated:** 2026-06-28
 
 BrainOS Global AI Engineering Rules define the mandatory operating standard for all AI systems, AI projects, AI agents, documentation, workflows, governance artifacts, and engineering work managed under BrainOS.
 
@@ -135,7 +135,56 @@ No integration may be treated as approved unless it is documented with:
 - Risk considerations.
 - Current status.
 
-## 9. Engineering Execution Rules
+## 9. Global Security Rules
+
+Security is deny-by-default. Any service, API, model server, dashboard, database, queue, storage, tunnel, reverse proxy route, dev server, notebook, AI UI, CI/CD runner, storage bucket, webhook, or automation endpoint must be private unless explicitly approved.
+
+Unknown public exposure is treated as a security incident.
+
+Security review must include IPv4, IPv6, cloud firewall/security group, DNS records, reverse proxies, tunnels, router port forwarding, and container port publishing.
+
+Every exposed service must have:
+
+- Owner.
+- Purpose.
+- Environment: dev/staging/prod.
+- Exposure level: local/private/public.
+- Port/domain.
+- Authentication method.
+- Authorization scope.
+- Allowed users or source IPs.
+- TLS requirement.
+- Firewall or network control.
+- Logging location.
+- Monitoring or alert rule.
+- Rate limit, quota, timeout, or resource limit.
+- Data sensitivity level.
+- Secret handling requirement.
+- Review date.
+- Expiry date if temporary.
+
+Public exposure is prohibited unless it has:
+
+- Explicit approval.
+- Authentication.
+- Least-privilege authorization.
+- TLS.
+- Firewall, VPN, allowlist, or equivalent network control.
+- Logging and monitoring.
+- Rate limits or resource limits.
+- Documented owner and review date.
+
+Temporary access must always have an expiry date. Access without an owner, auth, logs, or review date must be removed.
+
+All exceptions must be documented, time-limited, reviewed periodically, and removed when no longer needed.
+
+User-provided URLs, file paths, uploads, webhooks, and AI tool actions must be validated and restricted from accessing internal services, private networks, metadata endpoints, secrets, or unauthorized files.
+
+Secrets, tokens, credentials, customer data, internal URLs, and sensitive logs must not be committed, exposed, screenshotted, pasted into prompts, or shared publicly.
+
+After any abuse or suspected exposure, close access first, preserve logs, review scope, rotate affected secrets, check usage/billing, document root cause, and add a prevention rule before reopening.
+
+## 10. Engineering Execution Rules
 
 These rules apply when a BrainOS-governed project involves code, configuration, automation, infrastructure, or implementation work. BrainOS itself remains a governance and documentation foundation unless explicitly approved otherwise.
 
@@ -202,7 +251,7 @@ When working in an existing project:
 
 Do not introduce frameworks, queues, authentication systems, databases, ORMs, state managers, or infrastructure patterns unless explicitly requested or clearly justified by the task.
 
-## 10. Quality Rules
+## 11. Quality Rules
 
 ### Performance
 
@@ -240,7 +289,7 @@ Rules:
 
 Good code should be obvious, small, testable, boring, and easy to remove.
 
-## 11. Engineering Workflow Rules
+## 12. Engineering Workflow Rules
 
 ### Loop Engineering
 
@@ -330,7 +379,7 @@ When choosing between two solutions, prefer:
 - Easier rollback.
 - Code the current team can maintain.
 
-## 12. Tool Priority Rules
+## 13. Tool Priority Rules
 
 Priority:
 
@@ -347,7 +396,7 @@ Rules:
 - Prefer project scripts over invented commands.
 - Do not rely on memory when the answer exists in the repository.
 
-## 13. Feedback Rules
+## 14. Feedback Rules
 
 Adapt behavior continuously.
 
@@ -355,7 +404,7 @@ If the user says "wrong", do not repeat the same mistake.
 
 If the user says "good" or "perfect", treat the validated approach as a project pattern unless it conflicts with higher-priority governance.
 
-## 14. Output Style Rules
+## 15. Output Style Rules
 
 Use:
 
@@ -377,7 +426,7 @@ For non-trivial completed tasks, include:
 - Cons or risks: tradeoffs, edge cases, or operational risks.
 - Recommendations: next validation steps, monitoring, or future cleanup.
 
-## 15. BrainOS Repository Protection Rules
+## 16. BrainOS Repository Protection Rules
 
 The BrainOS central repository is the canonical governance source.
 
@@ -411,7 +460,7 @@ When applying BrainOS to another project:
 - Do not modify application code unless the user explicitly requests implementation work.
 - If there is uncertainty about whether a file belongs to the BrainOS central repository or the current project, ask before editing.
 
-## 16. Change Control Rules
+## 17. Change Control Rules
 
 Material changes to governed AI systems must update the relevant BrainOS documents. A material change includes any change to:
 
@@ -433,17 +482,17 @@ Changes to the BrainOS central repository itself require explicit approval and s
 - Review owner.
 - Effective date.
 
-## 17. Evaluation Rules
+## 18. Evaluation Rules
 
 AI systems must define success criteria before operational use. Evaluation may include quality, reliability, latency, cost, safety, compliance, human review rate, and business impact.
 
 Evaluation results must be documented when they influence project approval, redesign, or retirement.
 
-## 18. BrainOS Foundation Restrictions
+## 19. BrainOS Foundation Restrictions
 
 BrainOS itself is a governance and knowledge foundation. It must not contain business logic, application code, databases, containers, APIs, secrets, or production infrastructure unless explicitly approved by a future BrainOS governance decision.
 
-## 19. Compliance Checklist
+## 20. Compliance Checklist
 
 Before any AI project is considered governed by BrainOS, confirm:
 
