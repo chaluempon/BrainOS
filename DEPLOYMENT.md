@@ -16,6 +16,14 @@ BrainOS has no deployable application components. Deployment for BrainOS means c
 | Infrastructure | None |
 | Deployment artifact | Markdown documentation structure |
 
+## Runtime Boundary
+
+BrainOS foundation is not deployed as an application container. It is published as governed documentation.
+
+Runtime capabilities such as APIs, memory services, agent execution, model routing, workflow execution, logs, metrics, and database integrations must live in a separate project or repository, for example `BrainOS_Platform`.
+
+Other projects may read BrainOS rules from the published repository or from a future BrainOS Platform API, but they must not treat this foundation repository as a runtime service.
+
 ## Publication Guidance
 
 BrainOS documents should be published through approved organizational repositories, document portals, or knowledge systems. The published version must remain consistent with `GLOBAL_RULES.md`.
