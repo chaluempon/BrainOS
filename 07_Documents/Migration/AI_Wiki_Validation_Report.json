@@ -1,0 +1,59 @@
+{
+  "date": "2026-07-30",
+  "passed": true,
+  "checks": {
+    "manifest_entries_valid": true,
+    "ai_wiki_identical_to_restore_point": true,
+    "preexisting_brainos_changes_preserved": true,
+    "required_files_present": true,
+    "metadata_valid": true,
+    "counts_match": true,
+    "utf8_valid": true,
+    "broken_wikilinks_zero": true,
+    "ambiguous_wikilinks_zero": true,
+    "duplicate_alias_keys_zero": true,
+    "secret_scan_clear": true,
+    "obsidian_workspace_excluded_from_commit": true,
+    "git_diff_check_passed": true
+  },
+  "counts": {
+    "canonical_markdown_excluding_readme": 15,
+    "glossary_markdown": 31,
+    "source_markdown": 5,
+    "legacy_templates": 3,
+    "project_records": 1
+  },
+  "expected_counts": {
+    "canonical_markdown_excluding_readme": 15,
+    "glossary_markdown": 31,
+    "source_markdown": 5,
+    "legacy_templates": 3,
+    "project_records": 1
+  },
+  "manifest_errors": [],
+  "protected_results": {
+    "DEPLOYMENT.md": true,
+    "README.md": true,
+    ".DS_Store": true,
+    "DOCS/BKOS_KNOWLEDGE_MIGRATION_HANDOFF_2026-07-30.md": true,
+    "IDEA.md": true,
+    "KNOWLEDGE_BASE/DECISION_2026-06-27_BRAINOS_FOUNDATION_ONLY.md": true
+  },
+  "missing_required": [],
+  "metadata_errors": [],
+  "utf8_errors": [],
+  "broken_wikilinks": [],
+  "ambiguous_wikilinks": [],
+  "duplicate_alias_keys": {},
+  "secret_findings": [],
+  "portable_obsidian_configs": [
+    "app.json",
+    "appearance.json",
+    "core-plugins.json",
+    "graph.json"
+  ],
+  "workspace_present_after_user_opened_vault": true,
+  "workspace_ignored_by_git": true,
+  "git_diff_check_output": "",
+  "git_status": "## docs/project-usage-guide...origin/docs/project-usage-guide [ahead 3]\n?? IDEA.md"
+}

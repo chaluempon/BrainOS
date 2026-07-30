@@ -1,0 +1,3 @@
+# Preserve byte-exact migrated snapshots; do not normalize or flag their original whitespace.
+10_Archive/** -whitespace
+01_Knowledge/90_Templates/Legacy_Ai_WiKi/** -whitespace
