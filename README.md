@@ -4,6 +4,14 @@ Global Rules and governance foundation for BrainOS.
 
 BrainOS is the central AI Engineering Operating System for governance, documentation, standards, agent registry, workflow structure, and knowledge preservation across AI projects.
 
+## Repository Role
+
+This repository is the BrainOS foundation only. It is used to maintain central rules, governance documents, templates, registries, standards, and knowledge records.
+
+Do not add runtime application code, business logic, databases, API services, Docker containers, secrets, or production infrastructure to this repository.
+
+If BrainOS needs a runtime platform, create and maintain it as a separate project such as `BrainOS_Platform`. The platform may publish or serve rules from this repository, but this repository remains the source of truth for governance.
+
 ## Canonical Global Rules
 
 Use this raw URL when another project needs to read BrainOS rules:
