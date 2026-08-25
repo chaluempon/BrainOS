@@ -3,16 +3,19 @@ title: "Secure Software Engineering Checklist"
 type: "topic"
 tags: [security, secure-coding, devsecops, checklist, ai-agent-standard]
 created: 2026-05-08
-updated: 2026-05-08
+updated: 2026-08-25
 source_count: 1
 related: [owasp-asvs, owasp-samm, codeql]
 aliases: ["Secure Software Engineering Checklist"]
 category: Migrated_Ai_WiKi
-status: draft
+status: approved
 access_level: internal
 source_type: migrated_ai_wiki
 migrated_from: "wiki/topics/secure-software-engineering-checklist.md"
 migration_date: 2026-07-30
+reviewed_by: "BrainOS Owner"
+reviewed_date: 2026-08-25
+approval_scope: "Approved for controlled internal use as the primary security standard. Apply controls proportionately to project risk, scale, data sensitivity, external exposure, and production impact."
 domain: Engineering
 knowledge_type: canonical
 ---
