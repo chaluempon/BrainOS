@@ -3,16 +3,19 @@ title: "AI Agent Software Delivery Playbook"
 type: "topic"
 tags: [ai-agent, software-delivery, workflow, engineering-standard]
 created: 2026-05-08
-updated: 2026-05-08
+updated: 2026-08-25
 source_count: 1
 related: [software-engineering-project-standard, clean-architecture, owasp-asvs, codeql]
 aliases: ["AI Agent Software Delivery Playbook"]
 category: Migrated_Ai_WiKi
-status: draft
+status: approved
 access_level: internal
 source_type: migrated_ai_wiki
 migrated_from: "wiki/topics/ai-agent-software-delivery-playbook.md"
 migration_date: 2026-07-30
+reviewed_by: "BrainOS Owner"
+reviewed_date: 2026-08-25
+approval_scope: "Approved for controlled internal use as the primary AI software-delivery playbook. Apply it proportionately to project size, risk, and type while following GLOBAL_RULES.md and the smallest verified solution principle."
 domain: Engineering
 knowledge_type: canonical
 ---
