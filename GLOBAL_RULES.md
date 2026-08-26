@@ -3,9 +3,9 @@
 **Document Status:** Active Standard<br>
 **Authority:** Single Source Of Truth<br>
 **Owner:** BrainOS Owner<br>
-**Rule Set Version:** 2.0.0<br>
-**Supersedes:** 1.0.0<br>
-**Rollback Source:** BrainOS restore point `20260826T075149+0700-global-rules-v1`; Git baseline `208d7941705e6191addd2a115994f4b25b25c2a5`<br>
+**Rule Set Version:** 2.1.0<br>
+**Supersedes:** 2.0.0<br>
+**Rollback Source:** BrainOS restore point `20260826T081728+0700-global-rules-v2.0.0`; Git baseline `85531c6556f6dc98c9806efdeeea402f228f00b0`<br>
 **Reviewed By:** BrainOS Owner<br>
 **Review Date:** 2026-08-26<br>
 **Effective Date:** 2026-08-26<br>
@@ -163,6 +163,42 @@ Approval for one task, environment, or action does not imply approval for anothe
 Each active Global Rules release must record an owner, rule-set version, review date, effective date, and next review trigger. Material rule changes require a verified restore point, compatibility review, and a documented rollback source before becoming effective.
 
 If two requirements within the same precedence layer conflict, the BrainOS Owner or explicitly delegated reviewer is the tie-break authority. Until resolved, preserve the safer existing behavior.
+
+### 1.7 Project Resumption And Rule Refresh
+
+A project resumption check is required before modifying a project after seven or more calendar days without verified project activity. The seven-day threshold triggers validation; it does not authorize automatic rule changes, documentation rewrites, dependency upgrades, or broad repository review.
+
+The check must compare the current state with the last verified project state:
+
+1. Confirm the canonical Global Rules version or checksum and the version recorded by the project.
+2. Read current project instructions and the adoption record, if present.
+3. Inspect the active Git branch, working tree, and relevant changes since the last verified activity.
+4. Reconfirm the current objective, acceptance criteria, completed work, and open blockers.
+5. Inspect only dependencies, configuration, integrations, and runtime assumptions relevant to the resumed task.
+6. Reassess the work-size and risk tier before acting.
+
+If the canonical rules and relevant project state are unchanged, reuse the verified project state and continue without re-reading the complete rules or regenerating governance documents.
+
+If the Global Rules version changed, read the release difference rather than the entire knowledge base, identify which changes apply to the project, and update the project adoption record only when the change materially affects project behavior or controls.
+
+After thirty or more calendar days without verified project activity, or when the previous state is unknown, additionally revalidate the relevant architecture, deployment or runtime path, integrations, dependencies, security assumptions, and rollback path. Do not access production, credentials, or restricted data merely to complete this check; follow the approval and security rules when live verification is required.
+
+Run the resumption check immediately, regardless of elapsed time, when any of these conditions is known or suspected:
+
+- The Global Rules or project rules changed.
+- The branch, source, requirement, environment, dependency, configuration, integration, agent, tool, model provider, security posture, or runtime state changed.
+- Another person or agent modified or handed off the work.
+- A security incident, failed deployment, restore, rollback, or unexplained state drift occurred.
+
+Record a compact resumption state in the acceptance contract or durable task state: rule version, branch or source reference, material changes found, current risk tier, acceptance status, and the next verified action. Do not repeat decisions already preserved in that state unless new evidence changes them.
+
+Agents must not:
+
+- Modify the canonical Global Rules merely because time elapsed.
+- Overwrite project-local governance or adoption files without comparing versions and impact.
+- Re-read the entire knowledge base when the version and relevant state are unchanged.
+- Trust an old session summary without checking the current repository and authorized system state.
+- Resume from an old branch, environment, or runtime assumption without validation.
 
 ## 2. Core Governance Principles
 
