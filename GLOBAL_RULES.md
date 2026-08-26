@@ -1,8 +1,16 @@
 # BrainOS Global AI Engineering Rules
 
-**Document Status:** Active Standard  
-**Authority:** Single Source Of Truth  
-**Last Updated:** 2026-06-28
+**Document Status:** Active Standard<br>
+**Authority:** Single Source Of Truth<br>
+**Owner:** BrainOS Owner<br>
+**Rule Set Version:** 2.0.0<br>
+**Supersedes:** 1.0.0<br>
+**Rollback Source:** BrainOS restore point `20260826T075149+0700-global-rules-v1`; Git baseline `208d7941705e6191addd2a115994f4b25b25c2a5`<br>
+**Reviewed By:** BrainOS Owner<br>
+**Review Date:** 2026-08-26<br>
+**Effective Date:** 2026-08-26<br>
+**Next Review:** Within 90 days or after a material governance incident or change<br>
+**Last Updated:** 2026-08-26
 
 BrainOS Global AI Engineering Rules define the mandatory operating standard for all AI systems, AI projects, AI agents, documentation, workflows, governance artifacts, and engineering work managed under BrainOS.
 
@@ -21,9 +29,144 @@ Priority:
 
 Never add complexity without evidence.
 
+### 1.1 Work Size And Risk Tiers
+
+Before acting, classify the task by impact and risk. Impact always takes priority over the apparent size of a diff.
+
+When the tier is uncertain or disputed, apply the higher tier. Only the accountable owner may confirm a tier lower than the agent's evidence-based assessment.
+
+For these rules:
+
+- A **material change** changes purpose or scope, ownership, architecture, dependencies, security or authorization boundaries, data handling, external interfaces, deployment, or operational behavior.
+- A **transient assistant** completes a bounded task within the current session, has no persistent state or automated trigger, and receives no new tool access, data access, or decision authority.
+
+#### Low-Risk And Reversible
+
+Examples include read-only inspection, typo fixes, documentation updates, local analysis, and small changes that can be safely reversed.
+
+Rules:
+
+- Use only the governance artifacts and verification needed for the requested outcome.
+- Do not create a new charter, architecture document, registry, risk register, or approval gate when the task does not materially change the governed system.
+- Use a safe, reversible default when the repository and existing instructions provide enough evidence.
+- Verify the affected scope without expanding the task.
+
+#### Standard
+
+Examples include features, multi-file bug fixes, APIs, automations, workflow changes, and new dependencies.
+
+Rules:
+
+- Define scope and acceptance criteria.
+- Review relevant architecture, dependencies, risks, and project instructions.
+- Run the checks required to verify the changed behavior.
+- Update durable documentation when the change is material.
+
+#### High-Risk
+
+Examples include production changes, public exposure, sensitive or regulated data, authentication or authorization boundaries, secrets, database migrations, destructive actions, and changes that are difficult to reverse.
+
+Rules:
+
+- Require an authorized owner and explicit approval for the exact action and environment.
+- Preserve a verified restore point or backup before change.
+- Define rollback, abort criteria, and post-change verification.
+- Apply the relevant security, privacy, deployment, and operational controls.
+- Never downgrade a task merely because the code or configuration change is small.
+
+Security, privacy, authorization, secret handling, repository boundaries, and controls over destructive or irreversible production actions are invariant. Lower-priority rules, project preferences, efficiency goals, and task-local instructions must not waive them.
+
+### 1.2 Question And Assumption Protocol
+
+Before asking the user, an agent must:
+
+1. Re-read the current request and answers already provided.
+2. Inspect the authorized repository, documentation, tools, and source of truth when they can answer the question safely.
+3. Avoid asking for information that is already present or retrievable.
+4. Use a clearly stated safe and reversible assumption for low-risk work when the assumption does not materially change the outcome.
+5. Combine independent blocking questions into one concise question set.
+
+An agent must ask before proceeding when the missing decision concerns credentials, login, elevated permissions, payment, production, sensitive data, public exposure, destructive or irreversible action, insufficient authority, or alternatives with materially different outcomes or risks.
+
+Do not repeat a question, including a semantically equivalent rewording, unless new evidence or a changed condition makes the previous answer insufficient. This rule continues across summaries, context compaction, handoffs, and resumed sessions.
+
+Record every answered decision and stated assumption in the acceptance contract or durable task state before continuing. Enforce the no-repeat rule against that record rather than conversation memory alone. Low-risk work does not require a new file when the current session's task state remains sufficient.
+
+When escalating, report only the blocker, redacted evidence already checked, the risk of proceeding, and the exact decision required. Never echo secrets, credentials, private keys, regulated data, or unnecessary personal information.
+
+### 1.3 Rule Precedence
+
+When instructions conflict, apply this order:
+
+1. Safety, security, privacy, and authorization.
+2. Repository protection.
+3. Change control and approved operational controls.
+4. Project-specific rules and acceptance criteria.
+5. Global governance and engineering rules.
+6. Efficiency, presentation, and output style.
+
+A specific rule may override a general rule only when it does not violate a higher-priority layer.
+
+Project-specific rules may tighten global rules or govern matters the global rules leave open. They must not waive human accountability, traceability, required agent registration, approval authority, or any invariant control defined by these Global Rules.
+
+When rules at the same layer conflict, prefer the option that is safer, has less impact, is easier to reverse, and can be verified more directly. If a high-impact conflict remains unresolved, stop and request the minimum necessary decision.
+
+Project-native tooling determines the supported command or workflow. Use the CLI as the execution channel when appropriate; CLI priority does not authorize bypassing project-native tooling.
+
+### 1.4 Acceptance Contract And Final Status
+
+Before implementation, establish a task-appropriate acceptance contract from the request and available project evidence. It must identify:
+
+- The required outcome.
+- Scope and explicit exclusions.
+- Acceptance criteria.
+- Required checks or evidence.
+- Material risks, prohibited actions, and required approvals.
+
+Use detail proportional to the task tier. A low-risk task may use a short implicit contract derived from the request; a high-risk task requires an explicit contract.
+
+Every final report must use one of these states:
+
+- `DONE`: The requested outcome and acceptance criteria are verified.
+- `PARTIAL`: A defined portion is verified, and the incomplete portion is identified.
+- `BLOCKED`: Work cannot safely continue because of a concrete blocker.
+- `ESCALATED`: A new approval, credential, authority, or material decision is required.
+
+Do not report `DONE` when verification has not occurred, a named requirement is incomplete, the deliverable is only a plan or stub, or the conclusion depends on unsupported assumptions.
+
+### 1.5 Anti-Loop And Evidence-Based Escalation
+
+Do not repeat the same diagnosis, patch, command, question, or verification without new evidence or a stated reason that changes the expected result.
+
+After a failed verification:
+
+1. Read the new error or evidence.
+2. Re-evaluate the current root-cause hypothesis.
+3. Identify what changed since the previous attempt.
+4. Choose a materially different evidence-based next action.
+5. Stop as `BLOCKED` or `ESCALATED` when progress requires unavailable authority, information, access, or a speculative change.
+
+Do not use one fixed retry, loop, or token limit for all tasks. The stop threshold must be proportional to risk, reversibility, evidence gained, and the cost of another attempt. High-risk work must not become faster by skipping required verification.
+
+### 1.6 Approval Authority And Rule Versioning
+
+An approval must identify:
+
+- The authorized approver.
+- The exact action and scope approved.
+- The target environment.
+- Any time limit or expiry.
+- Required rollback and post-action verification.
+
+Approval for one task, environment, or action does not imply approval for another. Agents must not approve production actions on behalf of the accountable owner.
+
+Each active Global Rules release must record an owner, rule-set version, review date, effective date, and next review trigger. Material rule changes require a verified restore point, compatibility review, and a documented rollback source before becoming effective.
+
+If two requirements within the same precedence layer conflict, the BrainOS Owner or explicitly delegated reviewer is the tie-break authority. Until resolved, preserve the safer existing behavior.
+
 ## 2. Core Governance Principles
 
-1. **Governance first:** No AI project may proceed without documented ownership, scope, architecture, dependencies, risks, and review status.
+1. **Governance first and proportional:** Every governed task must have enough ownership, scope, risk, and review evidence for its tier. Standard and high-risk projects require the full applicable governance set. Low-risk reversible work may proceed using existing project governance and a task-level acceptance contract when it does not materially change the governed system.
 2. **Documentation is a system asset:** Documentation is not optional support material. It is part of the operating system and must be maintained with the same discipline as implementation artifacts.
 3. **Human accountability:** AI agents may assist, propose, generate, summarize, and automate, but accountable ownership remains with named human or organizational owners.
 4. **Traceability:** Important decisions, assumptions, dependencies, and changes must be traceable through approved BrainOS documents.
@@ -36,7 +179,7 @@ Never add complexity without evidence.
 
 ## 3. Project Governance Rules
 
-Every AI project governed by BrainOS must maintain:
+Every standard or high-risk AI project governed by BrainOS must maintain the applicable items below. Low-risk reversible tasks may rely on existing project records and must not create missing artifacts unless the task materially changes the governed system:
 
 - A project charter.
 - A system architecture document.
@@ -51,7 +194,7 @@ Projects must not rely on undocumented assumptions, hidden integrations, unmanag
 
 ## 4. Agent Governance Rules
 
-Every AI agent must be registered before use in a governed project. The registry must define:
+Every persistent, operational, or project-managed AI agent must be registered before use in a governed project. A transient assistant used for a bounded low-risk task may operate under the existing project tool policy and accountable owner when it does not gain new tools, data access, or decision authority. The registry must define:
 
 - Agent name.
 - Purpose.
@@ -420,7 +563,7 @@ Avoid:
 - Unnecessary repetition.
 - Pretending tradeoffs do not exist.
 
-For non-trivial completed tasks, include:
+For completed tasks, include the following when they materially affect user decisions, operations, risk, or future maintenance:
 
 - Pros: improvements gained.
 - Cons or risks: tradeoffs, edge cases, or operational risks.
@@ -494,7 +637,7 @@ BrainOS itself is a governance and knowledge foundation. It must not contain bus
 
 ## 20. Compliance Checklist
 
-Before any AI project is considered governed by BrainOS, confirm:
+Before any standard or high-risk AI project is considered governed by BrainOS, confirm the applicable items below. For low-risk reversible tasks, confirm the acceptance contract, repository boundary, required verification, and invariant security controls without creating unrelated governance artifacts:
 
 - The project has a charter.
 - Architecture is documented.
