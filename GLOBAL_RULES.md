@@ -3,14 +3,14 @@
 **Document Status:** Active Standard<br>
 **Authority:** Single Source Of Truth<br>
 **Owner:** BrainOS Owner<br>
-**Rule Set Version:** 2.1.0<br>
-**Supersedes:** 2.0.0<br>
-**Rollback Source:** BrainOS restore point `20260826T081728+0700-global-rules-v2.0.0`; Git baseline `85531c6556f6dc98c9806efdeeea402f228f00b0`<br>
+**Rule Set Version:** 2.2.0<br>
+**Supersedes:** 2.1.0<br>
+**Rollback Source:** BrainOS restore point `5efd97f522831c382154c17aa8e27aab69330ed4` (2.1.0); Git baseline `85531c6556f6dc98c9806efdeeea402f228f00b0`<br>
 **Reviewed By:** BrainOS Owner<br>
-**Review Date:** 2026-08-26<br>
-**Effective Date:** 2026-08-26<br>
+**Review Date:** 2026-09-10<br>
+**Effective Date:** 2026-09-10<br>
 **Next Review:** Within 90 days or after a material governance incident or change<br>
-**Last Updated:** 2026-08-26
+**Last Updated:** 2026-09-10
 
 BrainOS Global AI Engineering Rules define the mandatory operating standard for all AI systems, AI projects, AI agents, documentation, workflows, governance artifacts, and engineering work managed under BrainOS.
 
@@ -147,6 +147,12 @@ After a failed verification:
 5. Stop as `BLOCKED` or `ESCALATED` when progress requires unavailable authority, information, access, or a speculative change.
 
 Do not use one fixed retry, loop, or token limit for all tasks. The stop threshold must be proportional to risk, reversibility, evidence gained, and the cost of another attempt. High-risk work must not become faster by skipping required verification.
+
+"Proportional to risk" is a principle, not a license. An agent must not use task severity alone to justify unlimited iteration. Apply these default operational caps unless the accountable owner explicitly approves more before the next round starts:
+
+- Independent review of the same artifact revision by the same reviewer role (security, code, design) is capped at 2 rounds: round 1 establishes findings, round 2 confirms the fix. A 3rd round requires the accountable owner's explicit approval requested in advance, not reported after the fact.
+- Before starting any review round beyond the cap, report the finding count, cost, and time spent so far, and name the specific new risk that justifies continuing.
+- A reversible task must reach a demonstrable usable checkpoint before deep hardening iteration begins. A usable state and a fully hardened state are separate acceptance criteria; report them separately, and do not withhold or delay a usable checkpoint merely because hardening iteration is still open.
 
 ### 1.6 Approval Authority And Rule Versioning
 
