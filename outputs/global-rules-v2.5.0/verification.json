@@ -1,11 +1,16 @@
 {
-  "status": "DONE_LOCAL_AND_READER_PUBLICATION",
+  "status": "DONE_PUBLISHED",
   "version": "2.5.0",
   "effective_date": "2026-09-17",
-  "verified_at": "2026-09-17T09:23:38+07:00",
-  "scope": "Canonical working file, OneDrive reader Markdown, and reader package; no Git publication",
+  "verified_at": "2026-09-17T09:27:46+07:00",
+  "scope": "Canonical source, GitHub main, OneDrive reader Markdown, and reader package",
   "git_baseline": "d0564e3d3ed13fb71ad67a1e41a4473dd669ef79",
-  "git_commit_push_performed": false,
+  "git_commit_push_performed": true,
+  "github_publication": {
+    "pull_request": "https://github.com/chaluempon/BrainOS/pull/9",
+    "merge_commit": "98332feb5b854e44fc90fb63a33e2a92bd89a535",
+    "remote_readback": "PASS"
+  },
   "production_changes": false,
   "system_permission_changes": false,
   "restore_point": "/Users/dojo/.hermes/restore-points/BrainOS/20260917T090651+0700-before-v2.5.0",
@@ -31,9 +36,9 @@
   },
   "artifact_hashes": {
     "canonical_global_rules": "7535d716eb54056cf77cffdfc6ef99835cc35b1843189542c6d0aa579c71f76e",
-    "brainos_readme": "0dd4557a7e676431a56bb259be60342a5bda44afc1fd09ebbbe4590bf9fb1d5c",
+    "brainos_readme": "96f75b75eedf014f14612f4c618efa582d84efd7d39d59fa2e4ee04cdb6882db",
     "published_global_rules": "7535d716eb54056cf77cffdfc6ef99835cc35b1843189542c6d0aa579c71f76e",
-    "reader_readme": "8ff8407fd540ce688310f6b9545f4b0cd6279084da0be7e14f7ddf63e9510430",
+    "reader_readme": "06e2d80fe5e9283c023123fa908d7b28771d27ba56f25e8cb60a39807ce40938",
     "infographic_html": "8eeab40f480b8e89b75828885d141c094cfde3a39c80e2ea1e8a3e35d2e6a4f2",
     "infographic_png": "680d333a9d825cf04c771853733cc58d94ba806d787c9d64c3c4218080a599b6",
     "guide_html": "1be5b660cc0cd5da5a139c38f494f90abd83c80667464d9955c09c5737aeff17",
@@ -42,7 +47,6 @@
   },
   "not_proven": [
     "automatic enforcement across every agent/runtime",
-    "GitHub publication",
     "child-project adoption without their own rule refresh"
   ]
 }

@@ -2,7 +2,7 @@
 
 ## สถานะ
 
-`DONE_LOCAL_AND_READER_PUBLICATION` — canonical working file, OneDrive reader Markdown และ reader package อัปเดตและตรวจแล้ว ไม่มี Commit, Push, Pull Request, Production change หรือ permission change.
+`DONE_PUBLISHED` — canonical source, GitHub `main`, OneDrive reader Markdown และ reader package อัปเดตและตรวจแล้ว. PR #9 merge สำเร็จที่ `98332feb5b854e44fc90fb63a33e2a92bd89a535`; ไม่มี Production change, credential use หรือ permission change.
 
 ## กฎที่เพิ่ม
 
@@ -22,6 +22,8 @@ Checkpoint ไม่แทน live verification และไม่ข้าม s
 - Detailed PDF: `10 หน้า`, text markers/bounds `PASS`, visual QA `PASS`
 - PDF orphan-footer blocker found on first render, removed, rerendered, and stale page-11 preview deleted
 - `git diff --check`: `PASS`
+- GitHub PR #9: `MERGED`
+- GitHub `main` remote read-back: version/Section 1.9/SHA-256 `PASS`
 
 ## Restore
 
@@ -32,4 +34,4 @@ Checkpoint ไม่แทน live verification และไม่ข้าม s
 
 ## งานถัดไป
 
-Owner-only decision: whether to authorize a separate branch/commit/PR/merge workflow. Until explicitly requested, do not publish v2.5.0 to GitHub.
+ไม่มีงาน release ค้าง. รอ owner request ใหม่ และห้ามแก้โปรเจกต์ลูกอัตโนมัติเพียงเพราะ Global Rules เปลี่ยน.
