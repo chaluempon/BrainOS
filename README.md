@@ -32,21 +32,21 @@ If BrainOS needs a runtime platform, create and maintain it as a separate projec
 | Approved local version | `2.5.0` |
 | Supersedes | `2.4.0` (uncommitted local release) |
 | Effective date | `2026-09-17` |
-| Git publication | v2.5.0 not yet committed or pushed; last verified `main` is v2.2.0 (`d0564e3d3ed13fb71ad67a1e41a4473dd669ef79`) |
+| Git publication | v2.5.0 merged to `main` through [PR #9](https://github.com/chaluempon/BrainOS/pull/9); release merge commit `98332feb5b854e44fc90fb63a33e2a92bd89a535` |
 | Canonical file | [`GLOBAL_RULES.md`](GLOBAL_RULES.md) |
 
 The version metadata inside `GLOBAL_RULES.md` is authoritative. If this table and the canonical file ever differ, use the canonical file and update this README and all published copies in the same controlled change.
 
-## Current continuation checkpoint — 2026-09-17 09:23:38 +0700
+## Current continuation checkpoint — 2026-09-17 09:27:46 +0700
 
-- Project: `/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS`; release branch `docs/global-rules-v2.5.0-continuation`; base `HEAD == origin/main == d0564e3d3ed13fb71ad67a1e41a4473dd669ef79` (committed v2.2.0).
+- Project: `/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS`; publication branch `docs/global-rules-v2.5.0-final-state`; release source is GitHub `main` merge commit `98332feb5b854e44fc90fb63a33e2a92bd89a535`.
 - Working release: Global Rules v2.5.0, effective 2026-09-17, superseding the uncommitted local v2.4.0. Canonical SHA-256: `7535d716eb54056cf77cffdfc6ef99835cc35b1843189542c6d0aa579c71f76e`.
-- Worktree is intentionally dirty and includes work predating v2.5.0: 5 tracked modifications plus 3 untracked top-level paths. Preserve `AGENTS.md`, Project Starter files, `.worktrees/`, `outputs/`, and `work/`; never reset or clean them.
+- The release files are committed. Unrelated untracked `.worktrees/`, `outputs/`, and `work/` content predates this final-state update and remains intentionally untouched; never reset or clean it.
 - v2.5.0 adds `GLOBAL_RULES.md` Section 1.9: automatically update one current project checkpoint and durable task list after state-changing work; resumed agents read the latest checkpoint/task list first, verify bounded freshness, and avoid full rereads when the checkpoint remains valid.
 - Independent closure review: `PASS`, 0 mandatory blockers, reviewed canonical SHA-256 `7535d716...` and release-diff SHA-256 `44f21c09...`.
 - Reader-facing Markdown is byte-identical to canonical. Infographic is 1600 × 2600; detailed PDF is 10 pages. HTML parses, PDF text markers/bounds pass, and visual QA passed after removing one orphan footer page.
 - Restore point: `/Users/dojo/.hermes/restore-points/BrainOS/20260917T090651+0700-before-v2.5.0`; exact v2.4.0 file SHA-256 `134b14a...`; verified full Git bundle SHA-256 `badc8b21...`.
-- Owner explicitly authorized Git publication on 2026-09-17. Branch/commit/PR/merge workflow is in progress; this grants no Production, credential, permission, destructive-action, or unrelated-publication authority. Existing child projects are not rewritten automatically.
+- Owner explicitly authorized Git publication on 2026-09-17. PR #9 is merged and GitHub `main` read-back passed with canonical SHA-256 `7535d716...`. This grants no Production, credential, permission, destructive-action, or unrelated-publication authority. Existing child projects are not rewritten automatically.
 
 ### Durable task list
 
@@ -55,7 +55,8 @@ The version metadata inside `GLOBAL_RULES.md` is authoritative. If this table an
 - `completed` `gr-250-review`: Independent read-only closure review passed with no mandatory blockers.
 - `completed` `gr-250-publish-md`: Copy canonical Markdown to the OneDrive reader location and verify byte identity.
 - `completed` `gr-250-reader-package`: Update HTML sources, regenerate stable PNG/PDF, create v2.5.0 previews, and pass visual QA.
-- `in_progress` `gr-250-git-publication`: publish the reviewed release through branch protection, verify checks, merge, and read back GitHub `main`. GitHub PR state is the external acceptance record.
+- `completed` `gr-250-git-publication`: [PR #9](https://github.com/chaluempon/BrainOS/pull/9) merged; GitHub `main` version, Section 1.9, merge state, and canonical hash were read back successfully.
+- No project task is pending. First next action: wait for a new owner request; do not modify child projects automatically.
 
 Use this raw URL when another project needs to read BrainOS rules:
 
