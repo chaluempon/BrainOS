@@ -14,10 +14,12 @@ https://raw.githubusercontent.com/chaluempon/BrainOS/main/GLOBAL_RULES.md
 
 Agents must read the canonical BrainOS global rules before making changes. This file contains only project-local rules and stricter project-specific requirements.
 
+Use the instruction-loading procedure in the project root `AGENTS.md`: retain mandatory global and project rules, load supporting references by task, and reuse already-read content only when context and freshness satisfy Global Rules Section 1.7. A canonical URL is not a requirement to refetch unchanged rules before each edit.
+
 ## Local Operating Rules
 
 - Make the smallest correct change that can be verified.
-- Read existing code and documentation before editing.
+- Read relevant existing code and applicable instructions before editing; load supporting documentation according to the task's affected concerns.
 - Prefer project-native tooling and existing patterns.
 - Keep changes scoped to the current project.
 - Do not perform unrelated cleanup or refactors.

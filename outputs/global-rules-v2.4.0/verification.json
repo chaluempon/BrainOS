@@ -1,0 +1,42 @@
+{
+  "status": "DONE",
+  "scope": "Local rules and reader package; no Git publication",
+  "version": "2.4.0",
+  "started_at": "2026-09-15T16:17:38+07:00",
+  "verified_at": "2026-09-15T16:33:09.560395+07:00",
+  "elapsed_seconds_observed": 931.560395,
+  "review_seconds": 39.586004166,
+  "sandbox_seconds": 0.026798291999999998,
+  "waiting_rereading_rework_breakdown": null,
+  "timing_note": "Unknown uninstrumented categories, not zero; elapsed includes approval wait and tool roundtrips; no baseline speed comparison",
+  "snapshot": "/Users/dojo/.hermes/restore-points/BrainOS/20260915T161903+0700-before-v2.4.0",
+  "checks": {
+    "ten_principles_review": "PASS",
+    "diff_structure": "PASS",
+    "security_approval_precedence_preserved": "PASS",
+    "protected_and_template_files_unchanged_this_revision": "PASS",
+    "snapshot_actual_file_restore": "PASS",
+    "current_review_hash": "PASS",
+    "published_byte_match": "PASS",
+    "safe_workflow_checks": 8,
+    "pdf_pages": 9,
+    "visual_qa": "PASS"
+  },
+  "global_sha256": "134b14a98819a381df470e51fb3038610ba9177fb82cf4e6fcb3040dbb8f052b",
+  "git_baseline": "d0564e3d3ed13fb71ad67a1e41a4473dd669ef79",
+  "git_commit_push_performed": false,
+  "production_changes": false,
+  "system_permission_changes": false,
+  "not_proven": [
+    "LLM continuity under live user interjections",
+    "automatic enforcement across agents or production",
+    "speed improvement relative to a baseline"
+  ],
+  "artifact_hashes": {
+    "README.md": "8316c2929600ac93f3c7ecd292eedd2d524d71450d19c5d41da7518cef4b7f7e",
+    "BrainOS_GLOBAL_RULES_Infographic.html": "f8c8636f91056e923e26cf597dd94fb1e0dced687ce6dd0997018cc568b7c041",
+    "BrainOS_GLOBAL_RULES_Infographic.png": "98bf31bd373fee91f3db1a2c052f063750277f3048cfe53c09bbe94ea1d099b2",
+    "BrainOS_GLOBAL_RULES_คู่มือฉบับละเอียด.html": "feff1a8cdcee68f459b1cc05c4e67e47f411597d247168e3e8ccefe8175b7112",
+    "BrainOS_GLOBAL_RULES_คู่มือฉบับละเอียด.pdf": "a7f134285256541a9536475898df6dbfa093961ad7e9ce80d3fe26e4ebc6fcc5"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "preflight_and_restore",
+      "passed": true,
+      "destination_exists": true,
+      "scope": "disposable local folder"
+    },
+    {
+      "name": "reject_exit_zero_without_artifact",
+      "passed": true
+    },
+    {
+      "name": "supervised_single_writer",
+      "passed": true,
+      "pid": 84815,
+      "result_consumer": "parent",
+      "deadline_seconds": 5,
+      "wait_seconds": 0.014893208000000002,
+      "milestone": "artifact_written"
+    },
+    {
+      "name": "readback_exact_local_destination",
+      "passed": true,
+      "sha256": "cd8cd002e9dcaa8f39d8204adeb33e09e1da2695028b0a3f95cd4cd0fa274299"
+    },
+    {
+      "name": "reject_changed_artifact",
+      "passed": true
+    },
+    {
+      "name": "in_scope_repair_and_reverify",
+      "passed": true
+    },
+    {
+      "name": "restore_byte_match",
+      "passed": true
+    },
+    {
+      "name": "temporary_workspace_removed",
+      "passed": true
+    }
+  ],
+  "elapsed_seconds": 0.026798291999999998,
+  "proven": "offline deterministic example produced, verified, repaired and restored real files",
+  "not_proven": [
+    "LLM continuity under live user interjections",
+    "automatic enforcement across agents or production",
+    "speed improvement relative to a baseline"
+  ],
+  "production_access": false,
+  "system_permission_changes": false
+}
