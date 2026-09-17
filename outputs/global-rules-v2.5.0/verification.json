@@ -1,0 +1,48 @@
+{
+  "status": "DONE_LOCAL_AND_READER_PUBLICATION",
+  "version": "2.5.0",
+  "effective_date": "2026-09-17",
+  "verified_at": "2026-09-17T09:23:38+07:00",
+  "scope": "Canonical working file, OneDrive reader Markdown, and reader package; no Git publication",
+  "git_baseline": "d0564e3d3ed13fb71ad67a1e41a4473dd669ef79",
+  "git_commit_push_performed": false,
+  "production_changes": false,
+  "system_permission_changes": false,
+  "restore_point": "/Users/dojo/.hermes/restore-points/BrainOS/20260917T090651+0700-before-v2.5.0",
+  "independent_review": {
+    "verdict": "PASS",
+    "mandatory_blockers": 0,
+    "reviewed_candidate_sha256": "7535d716eb54056cf77cffdfc6ef99835cc35b1843189542c6d0aa579c71f76e",
+    "reviewed_diff_sha256": "44f21c09131e8dee5097b442f9e29eccb7f91d72bafe7226182501a5aabc7cfe"
+  },
+  "checks": {
+    "global_rules_structure": "PASS",
+    "git_diff_check": "PASS",
+    "published_byte_match": "PASS",
+    "html_parse": "PASS",
+    "infographic_dimensions": "1600x2600",
+    "pdf_pages": 10,
+    "pdf_text_markers": "PASS",
+    "pdf_text_bounds": "PASS",
+    "visual_qa": "PASS",
+    "orphan_footer_page_removed": "PASS",
+    "preview_pages": 10,
+    "review_montages": 3
+  },
+  "artifact_hashes": {
+    "canonical_global_rules": "7535d716eb54056cf77cffdfc6ef99835cc35b1843189542c6d0aa579c71f76e",
+    "brainos_readme": "0dd4557a7e676431a56bb259be60342a5bda44afc1fd09ebbbe4590bf9fb1d5c",
+    "published_global_rules": "7535d716eb54056cf77cffdfc6ef99835cc35b1843189542c6d0aa579c71f76e",
+    "reader_readme": "8ff8407fd540ce688310f6b9545f4b0cd6279084da0be7e14f7ddf63e9510430",
+    "infographic_html": "8eeab40f480b8e89b75828885d141c094cfde3a39c80e2ea1e8a3e35d2e6a4f2",
+    "infographic_png": "680d333a9d825cf04c771853733cc58d94ba806d787c9d64c3c4218080a599b6",
+    "guide_html": "1be5b660cc0cd5da5a139c38f494f90abd83c80667464d9955c09c5737aeff17",
+    "guide_pdf": "66982709ac508c8b5b1a9d2265c965399fb027089d1983bc8aee26c09b729f2b",
+    "release_diff": "44f21c09131e8dee5097b442f9e29eccb7f91d72bafe7226182501a5aabc7cfe"
+  },
+  "not_proven": [
+    "automatic enforcement across every agent/runtime",
+    "GitHub publication",
+    "child-project adoption without their own rule refresh"
+  ]
+}

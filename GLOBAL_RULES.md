@@ -3,14 +3,14 @@
 **Document Status:** Active Standard<br>
 **Authority:** Single Source Of Truth<br>
 **Owner:** BrainOS Owner<br>
-**Rule Set Version:** 2.2.0<br>
-**Supersedes:** 2.1.0<br>
-**Rollback Source:** BrainOS restore point `5efd97f522831c382154c17aa8e27aab69330ed4` (2.1.0); Git baseline `85531c6556f6dc98c9806efdeeea402f228f00b0`<br>
+**Rule Set Version:** 2.5.0<br>
+**Supersedes:** 2.4.0<br>
+**Rollback Source:** Verified snapshot `20260917T090651+0700-before-v2.5.0`, file `repository/GLOBAL_RULES.md` (uncommitted v2.4.0), SHA-256 `134b14a98819a381df470e51fb3038610ba9177fb82cf4e6fcb3040dbb8f052b`; verified full Git bundle `BrainOS-full.bundle`, SHA-256 `badc8b214c31ca85c336ce15869f39a4969757da8198fad4f546106c73e9cc96`; Git history baseline `d0564e3d3ed13fb71ad67a1e41a4473dd669ef79` is v2.2.0, not the v2.4.0 rollback file<br>
 **Reviewed By:** BrainOS Owner<br>
-**Review Date:** 2026-09-10<br>
-**Effective Date:** 2026-09-10<br>
+**Review Date:** 2026-09-17<br>
+**Effective Date:** 2026-09-17<br>
 **Next Review:** Within 90 days or after a material governance incident or change<br>
-**Last Updated:** 2026-09-10
+**Last Updated:** 2026-09-17
 
 BrainOS Global AI Engineering Rules define the mandatory operating standard for all AI systems, AI projects, AI agents, documentation, workflows, governance artifacts, and engineering work managed under BrainOS.
 
@@ -125,6 +125,10 @@ Before implementation, establish a task-appropriate acceptance contract from the
 
 Use detail proportional to the task tier. A low-risk task may use a short implicit contract derived from the request; a high-risk task requires an explicit contract.
 
+For implementation tasks, include running or inspecting the result and repairing failures caused by the requested change in the acceptance criteria. Within the approved scope, continue through verified-safe checks and in-scope repairs without asking for approval at each step; do not stop at the first draft. Stop when acceptance is met, a concrete blocker occurs, an operational cap is reached, or the next action exceeds approved authority. This continuation does not grant commit/push, production, credential, elevated-permission, payment, destructive-action, or external-publication authority; all applicable owner gates and review caps remain in force.
+
+A user interjection or status question does not cancel approved work. Preserve its acceptance state, answer briefly, and continue unless the owner explicitly stops, reorders, or changes its scope. Apply such steering immediately and preserve unresolved owner gates; do not use continuity as permission to ignore a stop or exceed the original scope.
+
 Every final report must use one of these states:
 
 - `DONE`: The requested outcome and acceptance criteria are verified.
@@ -133,6 +137,8 @@ Every final report must use one of these states:
 - `ESCALATED`: A new approval, credential, authority, or material decision is required.
 
 Do not report `DONE` when verification has not occurred, a named requirement is incomplete, the deliverable is only a plan or stub, or the conclusion depends on unsupported assumptions.
+
+An agent's report, exit code `0`, or a `SUCCESS`/`DONE` message alone is not completion evidence. Inspect the current artifact and required tests; after a state-changing write, read back the exact authorized target and verify the intended result. Bind review and verification evidence to the current revision or checksum, not a previous output.
 
 ### 1.5 Anti-Loop And Evidence-Based Escalation
 
@@ -153,6 +159,8 @@ Do not use one fixed retry, loop, or token limit for all tasks. The stop thresho
 - Independent review of the same artifact revision by the same reviewer role (security, code, design) is capped at 2 rounds: round 1 establishes findings, round 2 confirms the fix. A 3rd round requires the accountable owner's explicit approval requested in advance, not reported after the fact.
 - Before starting any review round beyond the cap, report the finding count, cost, and time spent so far, and name the specific new risk that justifies continuing.
 - A reversible task must reach a demonstrable usable checkpoint before deep hardening iteration begins. A usable state and a fully hardened state are separate acceptance criteria; report them separately, and do not withhold or delay a usable checkpoint merely because hardening iteration is still open.
+
+These are maximum review rounds, not a requirement to run two reviews when the first passes. Nonblocking suggestions outside correctness, safety, and agreed acceptance must not delay delivery. If mandatory blockers remain at the cap, report them and request the exact decision needed; do not loop silently, bypass a gate, or restart review counts through another agent or handoff.
 
 ### 1.6 Approval Authority And Rule Versioning
 
@@ -183,7 +191,7 @@ The check must compare the current state with the last verified project state:
 5. Inspect only dependencies, configuration, integrations, and runtime assumptions relevant to the resumed task.
 6. Reassess the work-size and risk tier before acting.
 
-If the canonical rules and relevant project state are unchanged, reuse the verified project state and continue without re-reading the complete rules or regenerating governance documents.
+If the canonical rules and relevant project state are unchanged and the applicable instructions remain available in context, reuse the verified project state and continue without re-reading the complete rules or regenerating governance documents. A matching version or checksum alone is insufficient when the instruction content has been lost; reload the applicable instructions before acting. If freshness cannot be verified, report the uncertainty and resolve it before relying on the old state.
 
 If the Global Rules version changed, read the release difference rather than the entire knowledge base, identify which changes apply to the project, and update the project adoption record only when the change materially affects project behavior or controls.
 
@@ -205,6 +213,50 @@ Agents must not:
 - Re-read the entire knowledge base when the version and relevant state are unchanged.
 - Trust an old session summary without checking the current repository and authorized system state.
 - Resume from an old branch, environment, or runtime assumption without validation.
+
+### 1.8 Long-Running Work Readiness And Coordination
+
+- Before a time-consuming phase, verify the current workspace, authorized identity and permissions, required model/tool route, and necessary destination access using bounded, non-destructive checks. Resolve critical-path prerequisites first; if blocked, identify that phase as blocked and continue only independent authorized work. Do not retrieve secrets or probe unrelated systems for preflight.
+- Assign one writer per file or mutable resource. Parallel work must have non-overlapping write scopes; send only the necessary, permitted context. The coordinator owns review and completion: workers must not spawn nested reviewers or untracked handoff chains.
+- Report concise progress at meaningful transitions: current phase, last verified result, blocker, and next check. Every background task needs a named result consumer, traceable process/job handle, bounded deadline, and a supported completion or monitoring path. Follow it to a verified terminal outcome; a live process is not evidence of progress. Report blocked or timed-out work honestly rather than promising unattended progress.
+- Never trade safety for speed: do not grant blanket permissions, disable host-identity or authentication verification, drop backups, or skip required tests to make a task finish. A rule update alone authorizes no production change or system-permission change; use only the access already approved for the actual task.
+
+### 1.9 Durable Continuation Checkpoint And Task List
+
+Every governed project must maintain one clearly designated **current continuation checkpoint** and one durable task list whenever project work creates or changes durable state. Use a `Current continuation checkpoint` section in the project `README.md` by default. A project-native `HANDOFF.md`, `PROJECT_STATUS.md`, issue tracker, or equivalent may be used only when project instructions designate it and the README links to it unambiguously.
+
+The acting agent must update the checkpoint and task list automatically before its final response whenever it:
+
+- Completes or verifies a task or phase.
+- Pauses, stops, becomes blocked, or escalates.
+- Changes scope, architecture, deployment, runtime, integration, acceptance state, or an owner decision.
+- Hands work to another person or agent, reaches a context/session boundary, or leaves work for later continuation.
+
+A response that only answers a question and changes no project or task state does not require a new checkpoint. Do not append unlimited handoff narratives: update the single current checkpoint in place and keep older checkpoints clearly marked historical or in project history.
+
+The current checkpoint must be concise but sufficient for a new authorized agent to continue without relying on chat history. Record, as applicable:
+
+1. Timestamp and timezone, project path, rule version, branch/source revision, and clean/dirty worktree state.
+2. Current objective, scope, acceptance criteria, and explicit exclusions.
+3. Work completed and the exact verification evidence; distinguish source, historical runtime evidence, and live state.
+4. Decisions and assumptions already answered, including owner approvals and their boundaries.
+5. Open blockers, risks, owner-only actions, and prohibited workarounds.
+6. Ordered next actions with one exact first action, relevant file/artifact references, rollback or recovery notes, and commands only when they are safe and reusable.
+7. Runtime or external-system facts with the time observed; never present old evidence as current live state.
+
+The durable task list must use explicit statuses such as `pending`, `in_progress`, `completed`, `blocked`, or `cancelled`; include stable task identity, owner or required actor, dependency or blocker when material, and acceptance evidence for completed items. Keep at most one task `in_progress` per writer. Mark a task completed only after its acceptance evidence passes, not because work started or a worker reported success.
+
+Never store secrets, tokens, passwords, private keys, regulated records, unnecessary personal data, or unrestricted internal topology in the checkpoint or task list. Preserve one-writer ownership and do not overwrite concurrent work; reconcile changed state before updating the record.
+
+On resumption, the next agent must:
+
+1. Load the mandatory Global Rules and applicable project instructions, then read the designated latest current checkpoint and durable task list **before** broader discovery.
+2. Verify freshness with bounded checks of the named rule version, branch/revision, worktree, referenced artifacts, and only the live assumptions needed by the first pending task.
+3. If the checkpoint is current, internally consistent, and its required instruction content remains available, continue from its first pending action. Do not re-read the whole README, historical checkpoints, complete repository, or knowledge base from the beginning merely because a new agent or session started.
+4. Read only the files and linked sections required for the next action. If a rule or project version changed, inspect the relevant delta first rather than reloading unrelated material.
+5. Expand discovery only when the checkpoint is missing, stale, contradictory, references unavailable evidence, conflicts with current state, or lacks information required for safe execution. Record the corrected checkpoint before continuing.
+
+The latest checkpoint is a continuity aid, not an authority bypass. It cannot override safety, security, privacy, repository boundaries, current owner instructions, or required live verification. Older or more detailed checkpoints must not be selected over the designated current checkpoint unless the current one is proven invalid and the reason is recorded.
 
 ## 2. Core Governance Principles
 
@@ -279,6 +331,14 @@ Feature documentation must include:
 - Limitations.
 
 Feature documentation must not include changelog or version history. Git or the approved project history system tracks history.
+
+### Skill And Agent Instruction Maintenance
+
+- Keep skill descriptions short and specific about the workflow that triggers their use; avoid broad triggers that load unrelated guidance.
+- For multiple workflows, keep the root instruction file a concise router to supporting references and scripts. Load supporting material only when its stated condition applies; mandatory global and project instructions remain binding.
+- Avoid duplicate, conflicting, or unnecessarily prescriptive recipes. Keep shared safety and completion rules model-neutral; isolate model-specific techniques in clearly scoped supporting guidance.
+- Revisit instructions when the model, tools, workflow, or evidence of repeated failure changes. Do not automatically relax safety, verification, restore points, or owner authority because a newer model is available.
+- Keep shared principles in Global Rules. Put exact model IDs, CLI invocations, timeouts, permission configuration, and deployment procedures in the relevant approved skills or runbooks; use the owner's latest authorized routing. This separation does not authorize installing skills, switching providers, or changing permissions.
 
 ## 6. Knowledge Preservation Rules
 
@@ -532,6 +592,8 @@ Before editing, read project instructions and relevant documentation such as:
 - `README.md`.
 - BrainOS governance files.
 
+Read the mandatory global and applicable project instructions first. Match supporting-document depth to the task: architecture for structural or service-boundary changes, schema documentation for data-model changes, and deployment guidance for deployment work. Do not require a full repository map or every supporting document for a low-risk edit when current evidence is sufficient. Reuse previously read instructions only under the freshness and context conditions in Section 1.7.
+
 Then:
 
 1. Read relevant source code.
@@ -542,7 +604,7 @@ Then:
 6. Check impact.
 7. Explain why this fix is appropriate.
 
-If unclear, ask first. Never edit before reading.
+If unclear, inspect authorized evidence first and apply the safe, reversible assumption and escalation rules in Section 1.2. Ask only when a missing decision materially affects the outcome, risk, or authority. Never edit before reading the relevant source and applicable instructions.
 
 ### During Implementation
 
@@ -556,6 +618,8 @@ Rules:
 - Reuse existing utilities and patterns.
 - Prefer project-native tooling.
 - Verify after meaningful changes.
+
+Start with checks that cover the changed behavior; broaden them when shared components, system boundaries, risk, or mandatory project requirements justify it. Before running a check, inspect its command, configuration, targets, and side effects; the label "local test" does not prove isolation or safety. Run and rerun it without repeated approval only when its data access, writes, network calls, costs, and process effects are understood and within the approved scope. Do not contact production or exercise privileged or destructive paths merely to verify a change. Reuse still-valid evidence and avoid repeating unchanged checks without a reason, while preserving all required verification and operational caps.
 
 When choosing between two solutions, prefer:
 
@@ -580,6 +644,7 @@ Rules:
 - Use existing tests and checks first.
 - Prefer project scripts over invented commands.
 - Do not rely on memory when the answer exists in the repository.
+- Use direct tools or deterministic scripts for reading, calculation, checksum comparison, transformations, and test execution. Do not delegate these mechanical steps to another AI unless a specific reasoning need justifies the added route or handoff.
 
 ## 14. Feedback Rules
 
@@ -672,6 +737,8 @@ Changes to the BrainOS central repository itself require explicit approval and s
 AI systems must define success criteria before operational use. Evaluation may include quality, reliability, latency, cost, safety, compliance, human review rate, and business impact.
 
 Evaluation results must be documented when they influence project approval, redesign, or retirement.
+
+For long-running work, record observed start/end times and total elapsed time, plus attributable waiting, repeated reading, review, and rework time when measurable. Keep overlapping activities distinct from wall-clock time; mark unavailable breakdowns as unknown, not zero. Use a lightweight task record rather than adding a monitoring system solely for this rule. Do not claim a speed improvement without comparable before/after evidence; report verified outcomes separately from unproven benefits.
 
 ## 19. BrainOS Foundation Restrictions
 
