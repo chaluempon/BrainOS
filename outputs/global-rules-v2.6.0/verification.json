@@ -1,9 +1,10 @@
 {
-  "status": "LOCAL_ACCEPTANCE_PASS_GIT_PENDING",
+  "status": "DONE_PUBLISHED",
   "version": "2.6.0",
   "supersedes": "2.5.0",
   "effective_date": "2026-09-20",
-  "verified_at": "2026-09-20T01:40:29+07:00",
+  "verified_at": "2026-09-20T01:44:06+07:00",
+  "published_at": "2026-09-20T01:43:18+07:00",
   "branch": "docs/global-rules-v2.6.0",
   "baseline_commit": "f8433b6cfd5da4d2a95629533ac486a4c5b9c202",
   "canonical_sha256": "de2d12391da8dd6b046712e3ec509e4d5783493ca26105280061f21bdaac53a8",
@@ -38,10 +39,13 @@
   },
   "git_publication": {
     "authorized": true,
-    "commit": null,
-    "pull_request": null,
-    "merged": false,
-    "origin_main_readback": false
+    "release_commit": "d09f3dfbcd7b5c150e7913f99a5157e868a5b824",
+    "pull_request": "https://github.com/chaluempon/BrainOS/pull/11",
+    "merge_commit": "67404f5ae58bcbda963f648814e450de1101a403",
+    "merged": true,
+    "origin_main_readback": "PASS",
+    "remote_canonical_sha256": "de2d12391da8dd6b046712e3ec509e4d5783493ca26105280061f21bdaac53a8",
+    "release_branch_deleted": true
   },
   "production_changes": false,
   "deployment_changes": false,

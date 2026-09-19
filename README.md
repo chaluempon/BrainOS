@@ -32,21 +32,21 @@ If BrainOS needs a runtime platform, create and maintain it as a separate projec
 | Approved local version | `2.6.0` |
 | Supersedes | `2.5.0` |
 | Effective date | `2026-09-20` |
-| Git publication | Pending on `docs/global-rules-v2.6.0`; GitHub `main` remains v2.5.0 until the approved PR is merged and read back |
+| Git publication | v2.6.0 merged to `main` through [PR #11](https://github.com/chaluempon/BrainOS/pull/11); release merge commit `67404f5ae58bcbda963f648814e450de1101a403` |
 | Canonical file | [`GLOBAL_RULES.md`](GLOBAL_RULES.md) |
 
 The version metadata inside `GLOBAL_RULES.md` is authoritative. If this table and the canonical file ever differ, use the canonical file and update this README and all published copies in the same controlled change.
 
-## Current continuation checkpoint — 2026-09-20 01:41:20 +0700
+## Current continuation checkpoint — 2026-09-20 01:44:06 +0700
 
-- Project: `/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS`; release branch `docs/global-rules-v2.6.0`; Git baseline `f8433b6cfd5da4d2a95629533ac486a4c5b9c202`.
-- Objective: publish Global Rules v2.6.0 with a safe server-first verification and remote-source-checkpoint rule. Production, credentials, permissions, deployment, destructive actions, unrelated untracked work, and automatic child-project rewrites are excluded.
-- Candidate source: `GLOBAL_RULES.md`, SHA-256 `de2d12391da8dd6b046712e3ec509e4d5783493ca26105280061f21bdaac53a8`; tracked working changes are limited to the release files. Existing `.worktrees/`, unrelated `outputs/`, and `work/` content remain untouched.
+- Project: `/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS`; publication-record branch `docs/global-rules-v2.6.0-final-state`; release source is GitHub `main` merge commit `67404f5ae58bcbda963f648814e450de1101a403`.
+- Published release: Global Rules v2.6.0, effective 2026-09-20, superseding v2.5.0. Canonical SHA-256: `de2d12391da8dd6b046712e3ec509e4d5783493ca26105280061f21bdaac53a8`.
+- The release files are committed. Existing `.worktrees/`, unrelated `outputs/`, and `work/` content remains intentionally untouched; never reset or clean it.
 - Verified restore point: `/Users/dojo/.hermes/restore-points/BrainOS/20260920T012832+0700-before-v2.6.0`; exact v2.5.0 SHA-256 `7535d716...`; full Git bundle and reader-package archive passed verification.
 - The corrected rule designates authorized non-production build/CI/staging targets, allows bounded local checks, forbids treating Production as the default, preserves commit/push owner gates, distinguishes a remote source checkpoint from a full restore point, and resolves conflicts through Section 1.3.
 - Independent closure review on canonical SHA-256 `de2d1239...`: `PASS`, 0 mandatory blockers. Canonical, OneDrive, and Documents Markdown are byte-identical; Infographic is 1600 × 2600 and the detailed PDF is 11 pages; geometry, text bounds, and visual QA of every page passed.
-- Owner authorized continuing the v2.6.0 correction and Git publication on 2026-09-20. This authorization does not grant Production, credential, elevated-permission, destructive-action, or unrelated-publication authority.
-- First pending action: commit only the four reviewed release files, push `docs/global-rules-v2.6.0`, open and merge the approved PR, then read back GitHub `main`.
+- Owner authorized Git publication on 2026-09-20. [PR #11](https://github.com/chaluempon/BrainOS/pull/11) is merged and GitHub `main` read-back passed for version, rule markers, and canonical hash. This grants no Production, credential, permission, destructive-action, or unrelated-publication authority.
+- No release task is pending. First next action: wait for a new owner request; do not modify child projects automatically.
 
 ### Durable task list
 
@@ -54,8 +54,8 @@ The version metadata inside `GLOBAL_RULES.md` is authoritative. If this table an
 - `completed` `gr-260-rule`: Correct the canonical v2.6.0 rule and metadata without weakening precedence or owner gates.
 - `completed` `gr-260-review`: Structure, compatibility, diff scope, and independent closure review passed against canonical SHA-256 `de2d1239...`.
 - `completed` `gr-260-reader`: OneDrive and Documents Markdown match canonical; regenerated HTML, PNG, PDF, and previews passed geometry, text-bound, and visual QA.
-- `in_progress` `gr-260-git`: Commit the reviewed scope, push the release branch, merge through branch protection, and read back GitHub `main`.
-- `pending` `gr-260-record`: Record final remote revision and verify all publication surfaces.
+- `completed` `gr-260-git`: [PR #11](https://github.com/chaluempon/BrainOS/pull/11) merged; GitHub `main` version, rule markers, and canonical hash were read back successfully.
+- `completed` `gr-260-record`: Publication state and evidence recorded; all required release surfaces verified.
 
 Use this raw URL when another project needs to read BrainOS rules:
 

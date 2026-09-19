@@ -60,4 +60,11 @@ Restore point identifier: `20260920T012832+0700-before-v2.6.0`
 
 ## Git publication
 
-Pending at the time of this report revision. The release must be committed on the dedicated branch, pushed without unrelated untracked files, merged through the repository workflow, and read back from GitHub `main` before publication is reported complete.
+- Owner authorization: confirmed on 2026-09-20
+- Release commit: `d09f3dfbcd7b5c150e7913f99a5157e868a5b824`
+- Pull request: [#11](https://github.com/chaluempon/BrainOS/pull/11)
+- Merge commit: `67404f5ae58bcbda963f648814e450de1101a403`
+- GitHub `main` read-back: `PASS`
+- Remote version: `2.6.0`
+- Remote canonical SHA-256: `de2d12391da8dd6b046712e3ec509e4d5783493ca26105280061f21bdaac53a8`
+- Release branch deleted after merge; unrelated untracked files were not included.
