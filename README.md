@@ -29,34 +29,33 @@ If BrainOS needs a runtime platform, create and maintain it as a separate projec
 
 | Field | Current value |
 | --- | --- |
-| Approved local version | `2.5.0` |
-| Supersedes | `2.4.0` (uncommitted local release) |
-| Effective date | `2026-09-17` |
-| Git publication | v2.5.0 merged to `main` through [PR #9](https://github.com/chaluempon/BrainOS/pull/9); release merge commit `98332feb5b854e44fc90fb63a33e2a92bd89a535` |
+| Approved local version | `2.6.0` |
+| Supersedes | `2.5.0` |
+| Effective date | `2026-09-20` |
+| Git publication | Pending on `docs/global-rules-v2.6.0`; GitHub `main` remains v2.5.0 until the approved PR is merged and read back |
 | Canonical file | [`GLOBAL_RULES.md`](GLOBAL_RULES.md) |
 
 The version metadata inside `GLOBAL_RULES.md` is authoritative. If this table and the canonical file ever differ, use the canonical file and update this README and all published copies in the same controlled change.
 
-## Current continuation checkpoint — 2026-09-17 09:27:46 +0700
+## Current continuation checkpoint — 2026-09-20 01:41:20 +0700
 
-- Project: `/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS`; publication branch `docs/global-rules-v2.5.0-final-state`; release source is GitHub `main` merge commit `98332feb5b854e44fc90fb63a33e2a92bd89a535`.
-- Working release: Global Rules v2.5.0, effective 2026-09-17, superseding the uncommitted local v2.4.0. Canonical SHA-256: `7535d716eb54056cf77cffdfc6ef99835cc35b1843189542c6d0aa579c71f76e`.
-- The release files are committed. Unrelated untracked `.worktrees/`, `outputs/`, and `work/` content predates this final-state update and remains intentionally untouched; never reset or clean it.
-- v2.5.0 adds `GLOBAL_RULES.md` Section 1.9: automatically update one current project checkpoint and durable task list after state-changing work; resumed agents read the latest checkpoint/task list first, verify bounded freshness, and avoid full rereads when the checkpoint remains valid.
-- Independent closure review: `PASS`, 0 mandatory blockers, reviewed canonical SHA-256 `7535d716...` and release-diff SHA-256 `44f21c09...`.
-- Reader-facing Markdown is byte-identical to canonical. Infographic is 1600 × 2600; detailed PDF is 10 pages. HTML parses, PDF text markers/bounds pass, and visual QA passed after removing one orphan footer page.
-- Restore point: `/Users/dojo/.hermes/restore-points/BrainOS/20260917T090651+0700-before-v2.5.0`; exact v2.4.0 file SHA-256 `134b14a...`; verified full Git bundle SHA-256 `badc8b21...`.
-- Owner explicitly authorized Git publication on 2026-09-17. PR #9 is merged and GitHub `main` read-back passed with canonical SHA-256 `7535d716...`. This grants no Production, credential, permission, destructive-action, or unrelated-publication authority. Existing child projects are not rewritten automatically.
+- Project: `/Users/dojo/Library/CloudStorage/OneDrive-isuzu-unt.com/Antigarvity/BrainOS`; release branch `docs/global-rules-v2.6.0`; Git baseline `f8433b6cfd5da4d2a95629533ac486a4c5b9c202`.
+- Objective: publish Global Rules v2.6.0 with a safe server-first verification and remote-source-checkpoint rule. Production, credentials, permissions, deployment, destructive actions, unrelated untracked work, and automatic child-project rewrites are excluded.
+- Candidate source: `GLOBAL_RULES.md`, SHA-256 `de2d12391da8dd6b046712e3ec509e4d5783493ca26105280061f21bdaac53a8`; tracked working changes are limited to the release files. Existing `.worktrees/`, unrelated `outputs/`, and `work/` content remain untouched.
+- Verified restore point: `/Users/dojo/.hermes/restore-points/BrainOS/20260920T012832+0700-before-v2.6.0`; exact v2.5.0 SHA-256 `7535d716...`; full Git bundle and reader-package archive passed verification.
+- The corrected rule designates authorized non-production build/CI/staging targets, allows bounded local checks, forbids treating Production as the default, preserves commit/push owner gates, distinguishes a remote source checkpoint from a full restore point, and resolves conflicts through Section 1.3.
+- Independent closure review on canonical SHA-256 `de2d1239...`: `PASS`, 0 mandatory blockers. Canonical, OneDrive, and Documents Markdown are byte-identical; Infographic is 1600 × 2600 and the detailed PDF is 11 pages; geometry, text bounds, and visual QA of every page passed.
+- Owner authorized continuing the v2.6.0 correction and Git publication on 2026-09-20. This authorization does not grant Production, credential, elevated-permission, destructive-action, or unrelated-publication authority.
+- First pending action: commit only the four reviewed release files, push `docs/global-rules-v2.6.0`, open and merge the approved PR, then read back GitHub `main`.
 
 ### Durable task list
 
-- `completed` `gr-250-restore`: Preserve and verify the exact v2.4.0 Markdown, reader package, and full Git bundle.
-- `completed` `gr-250-rule`: Add Section 1.9 and v2.5.0 metadata to canonical Global Rules.
-- `completed` `gr-250-review`: Independent read-only closure review passed with no mandatory blockers.
-- `completed` `gr-250-publish-md`: Copy canonical Markdown to the OneDrive reader location and verify byte identity.
-- `completed` `gr-250-reader-package`: Update HTML sources, regenerate stable PNG/PDF, create v2.5.0 previews, and pass visual QA.
-- `completed` `gr-250-git-publication`: [PR #9](https://github.com/chaluempon/BrainOS/pull/9) merged; GitHub `main` version, Section 1.9, merge state, and canonical hash were read back successfully.
-- No project task is pending. First next action: wait for a new owner request; do not modify child projects automatically.
+- `completed` `gr-260-restore`: Preserve and verify v2.5.0, Git history, the pre-existing v2.6.0 reader candidate, and the reader package.
+- `completed` `gr-260-rule`: Correct the canonical v2.6.0 rule and metadata without weakening precedence or owner gates.
+- `completed` `gr-260-review`: Structure, compatibility, diff scope, and independent closure review passed against canonical SHA-256 `de2d1239...`.
+- `completed` `gr-260-reader`: OneDrive and Documents Markdown match canonical; regenerated HTML, PNG, PDF, and previews passed geometry, text-bound, and visual QA.
+- `in_progress` `gr-260-git`: Commit the reviewed scope, push the release branch, merge through branch protection, and read back GitHub `main`.
+- `pending` `gr-260-record`: Record final remote revision and verify all publication surfaces.
 
 Use this raw URL when another project needs to read BrainOS rules:
 
@@ -113,7 +112,7 @@ Follow these stages in order so each location represents the same approved relea
 
 Owner approval to edit a release is not permission to commit or push it. Perform the Git steps only with explicit publication authorization; until then, label the approved local release and the last verified Git release separately.
 
-1. Commit with the version in the subject, for example: `docs(governance): release Global Rules v2.5.0`.
+1. Commit with the version in the subject, for example: `docs(governance): release Global Rules v2.6.0`.
 2. Push a dedicated branch, open a pull request, and merge through branch protection.
 3. Verify the exact file and version on GitHub `main`, then synchronize local `main`.
 4. Replace the OneDrive published copy from the canonical source and verify matching checksums.
@@ -146,6 +145,8 @@ Global Rules v2.1.0 adds a delta-based resumption check.
 
 Global Rules v2.5.0 adds a durable continuation rule: after project work changes state, update one designated current checkpoint and task list before the final response. A resumed agent reads that latest checkpoint and task list first, verifies bounded freshness, and does not reload the whole README, historical checkpoints, repository, or knowledge base when the current state remains valid.
 
+Global Rules v2.6.0 adds execution-location and remote-source-checkpoint controls. Use the project-designated non-production build, CI, staging, or runtime-equivalent target for authoritative verification when applicable; do not treat Production as the default. A local check is not target-runtime evidence, and a pushed commit preserves tracked source only. Commit, push, deployment, credentials, and elevated access still require their existing authorization.
+
 ### After 7 or more days without verified project activity
 
 Check the Global Rules version, project rules, Git branch and working tree, current objective, acceptance status, relevant configuration, and risk tier before modifying the project.
@@ -162,7 +163,20 @@ The time threshold triggers validation only. It does not authorize automatic rul
 
 ## Rollback And Restore Points
 
-### Immediate rollback from v2.5.0 to local v2.4.0
+### Immediate rollback from v2.6.0 to v2.5.0
+
+- Verified restore point: `/Users/dojo/.hermes/restore-points/BrainOS/20260920T012832+0700-before-v2.6.0`.
+- Restore `repository/GLOBAL_RULES.md` with SHA-256 `7535d716eb54056cf77cffdfc6ef99835cc35b1843189542c6d0aa579c71f76e`.
+- Verified full Git bundle: `BrainOS-full.bundle`, SHA-256 `84524428c8294980f4f9eacc4cabaeb26e018b1a03d4926dfccae5ad67a3a3cf`.
+- Verified reader-package archive: `reader-package-before-v2.6.0.zip`, SHA-256 `241b367e0ef995b7caca05caaf9edb74d23a8b81ff063d29d592452b86a68ea9`.
+- The restore point also preserves the pre-existing v2.6.0 reader candidate that had been written outside the canonical repository; that candidate is evidence, not the v2.5.0 rollback target.
+- Preserve newer work and restore only authorized files. Never reset or clean the repository to roll back this release.
+
+### v2.6.0 execution location and remote source checkpoints
+
+See `GLOBAL_RULES.md` Section 10, subsection `Execution Location And Remote Checkpoint Rules`. The authoritative verification target must be project-designated and non-production by default. Bounded local checks remain allowed, but target-runtime claims require the applicable target evidence. A pushed commit is a tracked-source checkpoint, not a full backup, and the rule does not grant commit, push, deployment, credential, Production, or elevated-access authority.
+
+### Historical rollback from v2.5.0 to local v2.4.0
 
 - Verified snapshot: `/Users/dojo/.hermes/restore-points/BrainOS/20260917T090651+0700-before-v2.5.0`.
 - Restore `repository/GLOBAL_RULES.md` with SHA-256 `134b14a98819a381df470e51fb3038610ba9177fb82cf4e6fcb3040dbb8f052b`.

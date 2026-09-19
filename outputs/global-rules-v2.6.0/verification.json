@@ -1,0 +1,50 @@
+{
+  "status": "LOCAL_ACCEPTANCE_PASS_GIT_PENDING",
+  "version": "2.6.0",
+  "supersedes": "2.5.0",
+  "effective_date": "2026-09-20",
+  "verified_at": "2026-09-20T01:40:29+07:00",
+  "branch": "docs/global-rules-v2.6.0",
+  "baseline_commit": "f8433b6cfd5da4d2a95629533ac486a4c5b9c202",
+  "canonical_sha256": "de2d12391da8dd6b046712e3ec509e4d5783493ca26105280061f21bdaac53a8",
+  "baseline_sha256": "7535d716eb54056cf77cffdfc6ef99835cc35b1843189542c6d0aa579c71f76e",
+  "release_diff_sha256": "867aad56da5e2142bbcddee0e71317d6f26d095f9e3fcd9720899cc6e58597c0",
+  "restore_point": "20260920T012832+0700-before-v2.6.0",
+  "restore_bundle_sha256": "84524428c8294980f4f9eacc4cabaeb26e018b1a03d4926dfccae5ad67a3a3cf",
+  "reader_archive_sha256": "241b367e0ef995b7caca05caaf9edb74d23a8b81ff063d29d592452b86a68ea9",
+  "checks": {
+    "restore_file_byte_compare": "PASS",
+    "git_bundle_verify": "PASS",
+    "reader_archive_verify": "PASS",
+    "markdown_structure": "PASS",
+    "git_diff_check": "PASS",
+    "added_line_secret_scan": "PASS",
+    "invariant_sections_unchanged": "PASS",
+    "independent_closure_review": "PASS",
+    "mandatory_blockers": 0,
+    "reader_markdown_byte_match": "PASS",
+    "infographic_geometry": "PASS",
+    "pdf_text_and_bounds": "PASS",
+    "visual_qa": "PASS"
+  },
+  "reader_package": {
+    "infographic_dimensions": [1600, 2600],
+    "pdf_pages": 11,
+    "visual_pages_checked": 11,
+    "infographic_html_sha256": "d0f5cb1a7b7c0ac16a5c3d765f378ed0a759b5bc517d6f5d7781d5aa8a4918a2",
+    "infographic_png_sha256": "a41f603e376bea8f9189524ae3e35d83604854f72c203d5887dbac4e6c84fc8e",
+    "guide_html_sha256": "b7181eebe29a02b12853759f4367cf44f85d19707f04c145da58999dd046ca97",
+    "guide_pdf_sha256": "b2d9a4bcdb4b7f69e5dda429de815f53dc7bb4ae2abcd281e4f2442ecf838499"
+  },
+  "git_publication": {
+    "authorized": true,
+    "commit": null,
+    "pull_request": null,
+    "merged": false,
+    "origin_main_readback": false
+  },
+  "production_changes": false,
+  "deployment_changes": false,
+  "credential_or_permission_changes": false,
+  "unrelated_untracked_files_included": false
+}
