@@ -3,14 +3,14 @@
 **Document Status:** Active Standard<br>
 **Authority:** Single Source Of Truth<br>
 **Owner:** BrainOS Owner<br>
-**Rule Set Version:** 2.5.0<br>
-**Supersedes:** 2.4.0<br>
-**Rollback Source:** Verified snapshot `20260917T090651+0700-before-v2.5.0`, file `repository/GLOBAL_RULES.md` (uncommitted v2.4.0), SHA-256 `134b14a98819a381df470e51fb3038610ba9177fb82cf4e6fcb3040dbb8f052b`; verified full Git bundle `BrainOS-full.bundle`, SHA-256 `badc8b214c31ca85c336ce15869f39a4969757da8198fad4f546106c73e9cc96`; Git history baseline `d0564e3d3ed13fb71ad67a1e41a4473dd669ef79` is v2.2.0, not the v2.4.0 rollback file<br>
+**Rule Set Version:** 2.6.0<br>
+**Supersedes:** 2.5.0<br>
+**Rollback Source:** Verified restore point `20260920T012832+0700-before-v2.6.0`, file `repository/GLOBAL_RULES.md` (v2.5.0), SHA-256 `7535d716eb54056cf77cffdfc6ef99835cc35b1843189542c6d0aa579c71f76e`; verified full Git bundle `BrainOS-full.bundle`, SHA-256 `84524428c8294980f4f9eacc4cabaeb26e018b1a03d4926dfccae5ad67a3a3cf`; Git baseline `f8433b6cfd5da4d2a95629533ac486a4c5b9c202`<br>
 **Reviewed By:** BrainOS Owner<br>
-**Review Date:** 2026-09-17<br>
-**Effective Date:** 2026-09-17<br>
+**Review Date:** 2026-09-20<br>
+**Effective Date:** 2026-09-20<br>
 **Next Review:** Within 90 days or after a material governance incident or change<br>
-**Last Updated:** 2026-09-17
+**Last Updated:** 2026-09-20
 
 BrainOS Global AI Engineering Rules define the mandatory operating standard for all AI systems, AI projects, AI agents, documentation, workflows, governance artifacts, and engineering work managed under BrainOS.
 
@@ -495,6 +495,27 @@ When working in an existing project:
 - Keep changes inside the existing architecture.
 
 Do not introduce frameworks, queues, authentication systems, databases, ORMs, state managers, or infrastructure patterns unless explicitly requested or clearly justified by the task.
+
+### Execution Location And Remote Checkpoint Rules
+
+When a project uses separate development and verification environments, project instructions must designate the authoritative build and verification target. A **target host** under this section means an authorized non-production build, test, CI, staging, or runtime-equivalent environment. It does not mean Production by default.
+
+Goals:
+
+- Reduce duplicate dependency-heavy work on the development workstation where the designated target can perform it.
+- Verify behavior in an environment closer to the intended runtime while preventing toolchain drift.
+- Preserve reviewed source checkpoints remotely so authorized work can resume from another workstation.
+
+Rules:
+
+1. Before remote execution, verify the target identity, repository and branch or revision, working directory, authorized access, required toolchain, and the side effects of the planned commands. Use only the approved route and never retrieve credentials or probe unrelated systems for this preflight.
+2. Run authoritative build, test, lint, typecheck, and runtime verification on the project-designated non-production target when it is available and technically applicable. Read-only documentation work and bounded local syntax, schema, or editor checks may remain on the development host. Avoid repeating an equivalent dependency-heavy build locally without an evidence-based reason.
+3. A local check does not establish target-runtime validity. If a local build or check is used, complete the required target verification before claiming the change works there. If the target is unavailable, report the affected criterion as `PARTIAL`, `BLOCKED`, or `ESCALATED`; do not silently substitute local evidence.
+4. Production is never the default build or test target. Building, testing, deploying, or running verification that can affect Production requires explicit approval for the exact action and environment, plus the applicable backup, rollback, abort, monitoring, and post-change controls. This section grants no deployment or elevated-access authority.
+5. At each meaningful usable checkpoint, and before a pause, handoff, context boundary, or end of state-changing work, update the designated current continuation checkpoint and task list. When commit and push are already within explicit or standing owner authorization and required scope review has passed, create a scoped commit and push the approved branch. Otherwise preserve a verified external restore point and record Git publication as pending. This rule does not create commit or push authority and does not require a commit for every micro-step.
+6. A pushed commit is a **remote source checkpoint** for tracked source only. It is not a substitute for required backups of databases, runtime state, generated deliverables, external systems, or untracked files. Preserve one-writer ownership, exclude secrets and unrelated work, use project-native branch protection, and verify the remote revision after push; a local-only commit is not a portable remote checkpoint.
+
+Project-specific instructions may select a stricter or safer execution location and verification path. Resolve conflicts under Section 1.3 and the current owner authorization; never use this section as a blanket override of project rules or safety controls.
 
 ## 11. Quality Rules
 
